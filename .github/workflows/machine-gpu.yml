@@ -1,0 +1,12 @@
+name: Machine GPU test
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/machine-gpu.yml
+jobs:
+  gpu:
+    runs-on: [machine, runner=t4-xl, tenancy=spot]
+    timeout-minutes: 10
+    steps:
+      - run: nvidia-smi
